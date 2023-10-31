@@ -5,11 +5,6 @@ const userSchema: Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   password: {
     type: String,
     required: true,
@@ -23,6 +18,15 @@ const userSchema: Schema = new mongoose.Schema({
     type: Number,
     required: true,
     unique: true,
+  },
+  createdAt: {
+    type: Date,
+    // indian time
+    default: Date.now() + 5.5 * 60 * 60 * 1000,
+  },
+  modifiedAt: {
+    type: Date,
+    default: null,
   },
   passwordResetToken: {
     type: String,
