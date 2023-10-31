@@ -2,7 +2,7 @@ import mongoose, { Schema, Types } from "mongoose";
 
 enum TaskStatus {
   TODO = "todo",
-  IN_PROGRESS = "in_progress",
+  IN_PROGRESS = "in progress",
   DONE = "done",
 }
 enum TaskLabel {
@@ -28,7 +28,7 @@ const taskSchema: Schema = new mongoose.Schema({
   description: {
     type: String,
   },
-  status: {
+  taskStatus: {
     type: String,
     enum: Object.values(TaskStatus),
     default: TaskStatus.TODO,
@@ -46,6 +46,7 @@ const taskSchema: Schema = new mongoose.Schema({
   projectId: {
     type: Types.ObjectId,
     ref: "Project",
+    required: true,
   },
 });
 
